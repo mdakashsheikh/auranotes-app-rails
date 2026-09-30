@@ -1,0 +1,108 @@
+
+<div class="min-h-[calc(100vh-4rem)] bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
+  <div class="mx-auto w-full max-w-md">
+
+    <!-- Header -->
+    <div class="mb-8 text-center">
+      <h1 class="text-3xl font-semibold tracking-tight text-gray-900">
+        Create your account
+      </h1>
+
+      <p class="mt-2 text-sm text-gray-500">
+        Start organizing your notes with Aura Notes.
+      </p>
+    </div>
+
+    <!-- Card -->
+    <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+
+      <!-- Errors -->
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <%= form_for(
+        resource,
+        as: resource_name,
+        url: registration_path(resource_name),
+        html: { class: "space-y-5" }
+      ) do |f| %>
+
+        <!-- Email -->
+        <div>
+          <%= f.label :email, class: "mb-2 block text-sm font-medium text-gray-700" %>
+
+          <%= f.email_field :email,
+              autofocus: true,
+              autocomplete: "email",
+              placeholder: "you@example.com",
+              class: "block w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-black focus:ring-2 focus:ring-black/10" %>
+        </div>
+
+        <!-- Password -->
+        <div>
+          <div class="mb-2 flex items-center justify-between">
+            <%= f.label :password, class: "block text-sm font-medium text-gray-700" %>
+
+            <% if @minimum_password_length %>
+              <span class="text-xs text-gray-400">
+                <%= @minimum_password_length %> characters minimum
+              </span>
+            <% end %>
+          </div>
+
+          <%= f.password_field :password,
+              autocomplete: "new-password",
+              placeholder: "••••••••",
+              class: "block w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-black focus:ring-2 focus:ring-black/10" %>
+        </div>
+
+        <!-- Password Confirmation -->
+        <div>
+          <%= f.label :password_confirmation,
+              class: "mb-2 block text-sm font-medium text-gray-700" %>
+
+          <%= f.password_field :password_confirmation,
+              autocomplete: "new-password",
+              placeholder: "••••••••",
+              class: "block w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-black focus:ring-2 focus:ring-black/10" %>
+        </div>
+
+        <!-- Submit -->
+        <div class="pt-2">
+          <%= f.submit "Create account",
+              class: "w-full cursor-pointer rounded-xl bg-black px-4 py-3 text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-gray-800 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2" %>
+        </div>
+
+      <% end %>
+
+      <!-- Divider -->
+      <div class="my-6 flex items-center gap-4">
+        <div class="h-px flex-1 bg-gray-200"></div>
+        <span class="text-xs text-gray-400">OR</span>
+        <div class="h-px flex-1 bg-gray-200"></div>
+      </div>
+
+      <!-- Login -->
+      <p class="text-center text-sm text-gray-500">
+        Already have an account?
+        <%= link_to "Log in",
+            new_user_session_path,
+            class: "font-semibold text-gray-900 underline decoration-gray-300 underline-offset-4 transition hover:decoration-black" %>
+      </p>
+
+    </div>
+
+    <!-- Footer text -->
+    <p class="mt-6 text-center text-xs leading-relaxed text-gray-400">
+      By creating an account, you agree to our
+      <%= link_to "Terms",
+          "#",
+          class: "underline underline-offset-2 hover:text-gray-600" %>
+      and
+      <%= link_to "Privacy Policy",
+          "#",
+          class: "underline underline-offset-2 hover:text-gray-600" %>.
+    </p>
+
+  </div>
+</div>
+
